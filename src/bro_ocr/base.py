@@ -1,5 +1,5 @@
 from pydantic import BaseModel, Field
-from typing import List
+from typing import List, Optional
 from enum import StrEnum
 
 class Dtype(StrEnum):
@@ -13,7 +13,7 @@ class Dtype(StrEnum):
 class Schema(BaseModel):
     field:str
     dtype:Dtype
-    instruction:str
+    instruction:Optional[str] = Field(default=None)
 
 class Patch(BaseModel):
     x:int
@@ -24,7 +24,7 @@ class Patch(BaseModel):
 
 class Template(BaseModel):
     name:str
-    instruction:str
+    instruction:Optional[str] = Field(default=None)
     width:int
     height:int
     patches:List[Patch]

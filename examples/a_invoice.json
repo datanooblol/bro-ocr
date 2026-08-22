@@ -1,0 +1,61 @@
+{
+  "width": 578,
+  "height": 750,
+  "boxes": [
+    {
+      "label": "invoice_date",
+      "instruction": "date format is month/day/year",
+      "schema_form": {
+        "shape": "single",
+        "leaf_type": "date",
+        "leaf_params": {
+          "format": "%m/%d/%Y"
+        },
+        "children": []
+      },
+      "xmin": 440,
+      "ymin": 110,
+      "xmax": 541,
+      "ymax": 127
+    },
+    {
+      "label": "total_amount",
+      "instruction": "amount is in float",
+      "schema_form": {
+        "shape": "single",
+        "leaf_type": "number",
+        "leaf_params": {},
+        "children": []
+      },
+      "xmin": 455,
+      "ymin": 564,
+      "xmax": 541,
+      "ymax": 589
+    },
+    {
+      "label": "items",
+      "instruction": "billable item description and amount is always in float. if amount is in (...) it's a negative number",
+      "schema_form": {
+        "shape": "list",
+        "leaf_type": null,
+        "leaf_params": {},
+        "children": [
+          {
+            "name": "description",
+            "type": "string",
+            "params": {}
+          },
+          {
+            "name": "amount",
+            "type": "number",
+            "params": {}
+          }
+        ]
+      },
+      "xmin": 39,
+      "ymin": 287,
+      "xmax": 540,
+      "ymax": 564
+    }
+  ]
+}

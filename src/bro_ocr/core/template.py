@@ -10,6 +10,11 @@ class Dtype(StrEnum):
     DATE = "date"
     DATETIME = "datetime"
 
+class SchemaType(StrEnum):
+    SINGLE = "single"
+    OBJECT = "object"
+    LIST = "list"
+
 class Schema(BaseModel):
     """This serves as instruction for information extraction"""
     field:str = Field(description="This is a field name")
@@ -18,15 +23,18 @@ class Schema(BaseModel):
 
 class Patch(BaseModel):
     """Patch is a region of interest inside an image"""
+    name:str = Field(description="patch name")
     x:int
     y:int
     w:int
     h:int
+    schema_type:SchemaType
     schemas:List[Schema] = Field(description="One patch can have more than one schema")
+    instruction:Optional[str] = Field(description="instruction here will be applied only with in this patch only", default=None)
 
 class Template(BaseModel):
     name:str
     instruction:Optional[str] = Field(description="this is a global instruction that will apply to all patches", default=None)
-    width:int = Field(description="this is an image's width")
-    height:int = Field(description="this is an image's height")
+    w:int = Field(description="this is an image's width")
+    h:int = Field(description="this is an image's height")
     patches:List[Patch] = Field(description="a collection of Patch")

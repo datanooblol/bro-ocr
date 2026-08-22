@@ -1,6 +1,6 @@
 [project]
 name = "bro-ocr"
-version = "0.1.0"
+version = "0.1.1"
 description = "Lightweight, LLM-agnostic OCR scaffolding: define regions and schemas with Template, build/validate structured extraction with SchemaConverter."
 readme = "README.md"
 requires-python = ">=3.12"

@@ -31,6 +31,8 @@ class SchemaConverter:
         if not (len(schemas) > 1):
             raise ValueError("object schema must have more than one schema")
         params = cls._get_params(schemas)
+        schema = create_model(f"{name}_model",**params)
+        params = {f"{name}":schema}
         return create_model(name, **params)
 
     @classmethod

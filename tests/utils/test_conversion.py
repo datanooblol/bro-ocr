@@ -34,8 +34,8 @@ def test_from_object_builds_model_with_multiple_fields():
         Schema(field="day", dtype=Dtype.INTEGER),
     ]
     model = SchemaConverter.from_object("invoice_date", schemas)
-    instance = model(year=2025, month=5, day=10)
-    assert (instance.year, instance.month, instance.day) == (2025, 5, 10)
+    instance = model(invoice_date=dict(year=2025, month=5, day=10))
+    assert (instance.invoice_date.year, instance.invoice_date.month, instance.invoice_date.day) == (2025, 5, 10)
 
 
 def test_from_object_rejects_single_schema():
